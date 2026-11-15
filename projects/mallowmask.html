@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MallowMask · Mingfei Ye</title>
+<meta name="description" content="A sleep mask that wakes only you, with light, warmth and vibration.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="wrap">
+  <nav class="topbar"><a href="../index.html">← mingfei ye</a><span>P02 / 05</span></nav>
+  <article>
+    <p class="post-meta-top">P02</p>
+    <h1 class="post-title">MallowMask</h1>
+    <p class="post-sub">A sleep mask that wakes only you, with light, warmth and vibration.</p>
+    <p class="post-meta">Co-founder &amp; product lead · Jul 2025 – Jun 2026 · Arduino, ESP32, nRF52840, BLE, KiCad</p>
+    <div class="post-body">
+
+<p>In a dorm or shared room, a loud alarm wakes everyone. MallowMask is a wearable that wakes only its wearer, without sound: a gradual sunrise of LEDs, gentle warmth, then soft vibration near the temples. It's built for shared living and for people who are hard of hearing.</p>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/HqAJ-uIuoUg?rel=0" title="MallowMask marketing video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<h3>v1.0: UPenn M&amp;TSI</h3>
+<p>I led a 5-person team at the UPenn Management &amp; Technology Summer Institute to build the first prototype: an Arduino-based mask controlled from a phone app through the Blynk IoT cloud. It won the <strong>Best Product Award</strong> out of 15 teams. My part was to:</p>
+<ul>
+<li>design the device circuitry and system architecture</li>
+<li>work out how vibration, light and heat should work together, and research the biology of sleep to set safety thresholds</li>
+<li>write all the embedded control logic in C++, a language I learned from scratch in two weeks</li>
+<li>integrate the embedded system with the IoT app my teammates built</li>
+<li>produce, film and edit the marketing video above</li>
+</ul>
+<figure class="pair"><img src="../assets/mask-circuit.jpg" alt="" loading="lazy"><img src="../assets/mask-app.jpg" alt="" loading="lazy"><figcaption>v1.0 circuit design, and the website and mobile app interface</figcaption></figure>
+<h3>v1.1 and v1.2: from prototype to product</h3>
+<p>After the program I kept going. <strong>v1.1</strong> shrank the control circuitry 8× compared with v1.0 and added an adjustable LED strip and four ERM vibration motors in a much lighter build. <strong>v1.2</strong> fits all the control circuitry inside the mask, uses two ERM motors, and is controlled over Bluetooth Low Energy. It moved from ESP32 to nRF52840 on custom KiCad PCBs, with a companion app and website, and it's portable enough for MVP testing.</p>
+<figure class="wide"><img src="../assets/mask-glow.jpg" alt="The wake-up lighting in a dark room" loading="lazy"><figcaption>The wake-up lighting in a dark room</figcaption></figure>
+<figure class="pair"><img src="../assets/mask-v12-schematic.jpg" alt="" loading="lazy"><img src="../assets/mask-fritzing.jpg" alt="" loading="lazy"><figcaption>v1.2 circuit schematic and wiring</figcaption></figure>
+<figure class=""><img src="../assets/mask-flow.jpg" alt="System flow across hardware and software" loading="lazy"><figcaption>System flow across hardware and software</figcaption></figure>
+<p>With a business partner I filed <strong>U.S. Provisional Patent Application No. 63/873965</strong> for a modular wake-up system, wrote a product specification document, and talked with manufacturers.</p>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/n2t8DPQUL_E?rel=0" title="MallowMask demo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+    </div>
+    <p class="post-links"><a href="https://devpost.com/software/team-3-mallowmask" target="_blank" rel="noopener">Devpost ↗</a><a href="https://www.youtube.com/watch?v=n2t8DPQUL_E" target="_blank" rel="noopener">Demo video ↗</a><a href="https://github.com/Dhruva966/mallowmask-wake-well" target="_blank" rel="noopener">App code (GitHub) ↗</a></p>
+    <p class="next">next → <a href="bb84-quantum-kit.html">BB84 Quantum Cryptography Kit</a></p>
+  </article>
+</main>
+</body>
+</html>

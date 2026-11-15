@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>555 PWM Motor Driver PCB · Mingfei Ye</title>
+<meta name="description" content="My CalSol onboarding board: a compact motor speed controller, from schematic to layout in KiCad.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="wrap">
+  <nav class="topbar"><a href="../index.html">← mingfei ye</a><span>P01 / 05</span></nav>
+  <article>
+    <p class="post-meta-top">P01</p>
+    <h1 class="post-title">555 PWM Motor Driver PCB</h1>
+    <p class="post-sub">My CalSol onboarding board: a compact motor speed controller, from schematic to layout in KiCad.</p>
+    <p class="post-meta">CalSol, UC Berkeley Solar Vehicle Team · Aug 2026 · KiCad, LM555, MOSFET</p>
+    <div class="post-body">
+
+<p>Every new member of CalSol's electrical subteam designs a board end to end. Mine controls a DC motor's speed using PWM. A 555 timer generates a square wave, and a MOSFET switches the motor's 12 V supply. The finished board is 29.7 × 18.0 mm, with two layers and 534.6 mm² of area.</p>
+<figure class="wide"><img src="../assets/calsol-layout.jpg" alt="Final layout. Power enters near the center so the LEDs, the 555 and the motor driver all reach 12 V with short traces." loading="lazy"><figcaption>Final layout. Power enters near the center so the LEDs, the 555 and the motor driver all reach 12 V with short traces.</figcaption></figure>
+<h3>How the circuit works</h3>
+<p><strong>Motor driver.</strong> A MOSFET connects and disconnects the motor from 12 V, gated by the 555's output. The 555 can't supply motor current itself. A 1 kΩ gate resistor reduces noise, a 10 kΩ pull-down keeps the MOSFET off when it should be, and a flyback diode across the motor suppresses voltage spikes.</p>
+<p><strong>Timing.</strong> Two diodes separate the capacitor's charging path (+12 V → D4 → C1) from its discharging path (C1 → RV2 → D5 → DIS). A potentiometer shifts the balance between them, which sets the duty cycle. In astable mode the duty cycle depends on just three resistances, <code>D = R<sub>B</sub> / (R<sub>A</sub> + 2R<sub>B</sub>)</code>, which makes the 555 easy to adjust.</p>
+<figure class="pair"><img src="../assets/calsol-sch-motor.jpg" alt="" loading="lazy"><img src="../assets/calsol-sch-rc.jpg" alt="" loading="lazy"><figcaption>The motor driver subcircuit (left) and the capacitor charge/discharge network (right)</figcaption></figure>
+<blockquote>The most interesting part to me was how a capacitor's time-varying voltage is used as essentially a clock, and how the circuit turns that continuous analog voltage into a digital signal with a duty cycle.</blockquote>
+<h3>Sizing the traces</h3>
+<p>I designed around the MS5N-2365-CVC DC motor, which has a 1.7 A stall current, and sized the motor-current traces for 2 A to leave margin. With 1 oz copper, 25 °C ambient and a 10 °C maximum temperature rise, an IPC-2221 calculator gave about 0.78 mm, which I rounded up to 0.8 mm. Signal and LED traces carry about 20 mA, so I used 0.2 mm, comfortably above JLCPCB's 0.10 mm minimum.</p>
+<figure class=""><img src="../assets/calsol-trace-calc.jpg" alt="IPC-2221 trace-width calculation for the 2 A motor path" loading="lazy"><figcaption>IPC-2221 trace-width calculation for the 2 A motor path</figcaption></figure>
+<h3>Layout</h3>
+<ul>
+<li>I grouped parts by functional subcircuit to keep traces short, placing the largest components first to set the board's shape. The MOSFET and potentiometers set the length; the MOSFET, flyback diode and connector set the width.</li>
+<li>I tucked small parts under the potentiometers' raised bodies. This triggers courtyard DRC warnings, but I checked the real dimensions. Letting one unused potentiometer pin hang off the edge saved about 80 mm².</li>
+<li>I kept the motor-current path and the 555 timing connections as short as possible. The TRIG net drops to the bottom layer through vias instead of wrapping around the IC.</li>
+<li>Connectors and potentiometers sit on the edges, where they're easy to reach.</li>
+</ul>
+<figure class=""><img src="../assets/calsol-3d.jpg" alt="3D model of the assembled board" loading="lazy"><figcaption>3D model of the assembled board</figcaption></figure>
+<h3>What I'm working on now</h3>
+<p>After onboarding I was selected as one of three engineers from the 47-member electrical subteam to develop the car's safety-critical battery management system, which handles battery monitoring, protection and power control. I'm taking its finished schematic to a KiCad PCB layout, with version control on GitHub. I also wrote real-time ESP32-S3 firmware in C (FreeRTOS/ESP-IDF) that turns incoming CAN bus commands into precisely timed brake-light LED patterns through the RMT peripheral.</p>
+
+    </div>
+    <p class="post-links"><a href="https://app.notion.com/p/Mingfei-Ye-CalSol-Onboarding-Layout-Write-Up-3e6fd47fecf0804d9beaf15d311d4b33" target="_blank" rel="noopener">Layout write-up (Notion) ↗</a><a href="https://app.notion.com/p/Mingfei-Ye-CalSol-Onboarding-Schematics-Write-Up-3e2fd47fecf080afb602c02a292b029c" target="_blank" rel="noopener">Schematic write-up (Notion) ↗</a></p>
+    <p class="next">next → <a href="mallowmask.html">MallowMask</a></p>
+  </article>
+</main>
+</body>
+</html>

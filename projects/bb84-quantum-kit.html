@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BB84 Quantum Cryptography Kit · Mingfei Ye</title>
+<meta name="description" content="Demonstrating quantum key distribution on a budget.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="wrap">
+  <nav class="topbar"><a href="../index.html">← mingfei ye</a><span>P03 / 05</span></nav>
+  <article>
+    <p class="post-meta-top">P03</p>
+    <h1 class="post-title">BB84 Quantum Cryptography Kit</h1>
+    <p class="post-sub">Demonstrating quantum key distribution on a budget.</p>
+    <p class="post-meta">Independent project · summer after 10th grade · optics, Arduino, Python, C++</p>
+    <div class="post-body">
+
+<p>Throughout 10th grade I studied quantum information science and toured quantum communication labs to learn about the emerging quantum internet. That summer I built a setup that demonstrates the <strong>BB84</strong> encryption protocol, so I could share what I'd learned back home.</p>
+<figure class="wide"><img src="../assets/bb84-laser.jpg" alt="I took this photo by spraying water across the beam during a long exposure." loading="lazy"><figcaption>I took this photo by spraying water across the beam during a long exposure.</figcaption></figure>
+<h3>The constraint</h3>
+<p>I didn't have the budget for the expensive devices needed to hold real quantum states, so I redesigned the photon physics as simple laser polarization. Lasers, polarizing filters, beamsplitters and photosensors are the main components, about 20+ parts in all. The kit runs both the Alice–Bob protocol and the Alice–Eve–Bob case, where an eavesdropper's measurements give her away.</p>
+<figure class="pair"><img src="../assets/bb84-build.jpg" alt="" loading="lazy"><img src="../assets/bb84-sketch.jpg" alt="" loading="lazy"><figcaption>Aligning the optics, and my sketch of the protocol</figcaption></figure>
+<h3>Reading the bits</h3>
+<p>An Arduino reads the photosensor signal and sends it to a laptop. I used Python and C++ to read and display the measurements.</p>
+<figure class="pair"><img src="../assets/bb84-setup.jpg" alt="" loading="lazy"><img src="../assets/bb84-laptop.jpg" alt="" loading="lazy"><figcaption>The Alice, Eve and Bob stations, and the readout</figcaption></figure>
+
+    </div>
+    
+    <p class="next">next → <a href="physics-courses.html">Physics, from Beginner to Olympiad</a></p>
+  </article>
+</main>
+</body>
+</html>
